@@ -8,7 +8,6 @@ Asegúrate de tener [Node.js](https://nodejs.org/) versión 18 o superior instal
 
 Abre tu terminal o consola de comandos y ejecuta el siguiente comando para instalar Angular CLI globalmente:
     
-    ```bash
     npm install -g @angular/cli@16
 
 
