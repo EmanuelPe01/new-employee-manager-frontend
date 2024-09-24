@@ -24,4 +24,19 @@ export class EstadoService {
     });
     return this.http.get<GenericItem[]>(url + '/admin/states-list', {headers})
   }
+
+  newState(body: any) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authService.getToken()}`
+    });
+
+    return this.http.post(url + "/admin/new-state", body, {headers})
+  }
+
+  deleteState(id: string) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authService.getToken()}`
+    });
+    return this.http.delete(url + '/admin/delete-state/' + id, {headers, responseType: 'text'})
+  }
 }

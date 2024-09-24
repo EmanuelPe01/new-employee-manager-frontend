@@ -16,10 +16,10 @@ import { AuthService } from 'src/app/services/auth.service';
           <h3>Hola {{nombre}}</h3>
         </li>
         <li class="nav-item m-3">
-         <a class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" routerLink="">Empleados</a>
+         <a class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" routerLink="/">Empleados</a>
         </li>
         <li class="nav-item m-3">
-         <a class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" routerLink="">Departamentos</a>
+         <a class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" routerLink="departments">Departamentos</a>
         </li>
         <li class="nav-item mt-3 mb-3">
           <div class="d-grid gap-2">

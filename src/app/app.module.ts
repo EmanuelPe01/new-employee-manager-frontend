@@ -14,6 +14,10 @@ import { MainComponent } from './screens/main/main.component';
 import { ShowEmployeesComponent } from './screens/main/show-employees/show-employees.component';
 import { EditEmployeeComponent } from './screens/main/show-employees/actions/edit-employee.component';
 import { DetailEmployeeComponent } from './screens/main/show-employees/actions/detail-employee.component';
+import { AllDepartmentsInformation } from './screens/main/show-departments/all-information.component';
+import { DepartmentsComponent } from './screens/main/show-departments/departments.component';
+import { PuestosComponent } from './screens/main/show-departments/puestos.component';
+import { StatesComponent } from './screens/main/show-departments/states.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { DetailEmployeeComponent } from './screens/main/show-employees/actions/d
     MainComponent,
     ShowEmployeesComponent,
     EditEmployeeComponent,
-    DetailEmployeeComponent
+    DetailEmployeeComponent,
+    AllDepartmentsInformation,
+    DepartmentsComponent,
+    PuestosComponent,
+    StatesComponent
   ],
   imports: [
     BrowserModule,

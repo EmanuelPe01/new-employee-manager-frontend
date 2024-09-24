@@ -24,4 +24,19 @@ export class PuestoService {
     });
     return this.http.get<GenericItem[]>(url + '/admin/puestos-list', {headers})
   }
+
+  newPuesto(body: any) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authService.getToken()}`
+    });
+
+    return this.http.post(url + "/admin/new-puesto", body, {headers})
+  }
+
+  deletePuesto(id: string) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authService.getToken()}`
+    });
+    return this.http.delete(url + '/admin/delete-puesto/' + id, {headers, responseType: 'text'})
+  }
 }

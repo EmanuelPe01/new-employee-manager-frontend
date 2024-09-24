@@ -21,4 +21,19 @@ export class DepartamentoService {
     });
     return this.http.get<GenericItem[]>(url + '/admin/department-list', {headers})
   }
+
+  newDepartment(body: any) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authService.getToken()}`
+    });
+
+    return this.http.post(url + "/admin/new-department", body, {headers})
+  }
+
+  deleteDepartment(id: string) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authService.getToken()}`
+    });
+    return this.http.delete(url + '/admin/delete-department/' + id, {headers, responseType: 'text'})
+  }
 }
