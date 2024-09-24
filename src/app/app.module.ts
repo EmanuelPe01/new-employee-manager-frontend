@@ -9,13 +9,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './screens/login/login.component';
 import { RegisterComponent } from './screens/register/register.component';
 import { InputComponent } from './items/input.component';
+import { SelectComponent } from './items/select.component';
+import { MainComponent } from './screens/main/main.component';
+import { ShowEmployeesComponent } from './screens/main/show-employees/show-employees.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    InputComponent
+    InputComponent,
+    SelectComponent,
+    MainComponent,
+    ShowEmployeesComponent,
   ],
   imports: [
     BrowserModule,

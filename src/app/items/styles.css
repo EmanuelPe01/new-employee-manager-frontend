@@ -1,6 +1,5 @@
 .input {
-    width: 80%;
-    margin-bottom: 2rem;
+    width: 100%;
     border: none;
     outline: none;
     border-radius: 100px;
@@ -14,4 +13,23 @@
     background-color: #ffffff;
     transform: scale(1.05);
     box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+}
+
+.inputField {
+    width: 100%;
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #e8e8e8;
+    box-shadow: 20px 20px 60px #c5c5c5,
+        -20px -20px 60px #ffffff;
+    transition: 0.3s;
+}
+
+.inputField:focus {
+    outline-color: #e8e8e8;
+    background: #e8e8e8;
+    box-shadow: inset 20px 20px 60px #c5c5c5,
+        inset -20px -20px 60px #ffffff;
+    transition: 0.3s;
 }
