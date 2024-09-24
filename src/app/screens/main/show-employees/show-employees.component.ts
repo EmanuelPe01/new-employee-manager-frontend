@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, throwError } from 'rxjs';
 import { Alerts } from 'src/app/items/alerts';
 import { EmployeeInfoItem, GenericItem } from 'src/app/models';
+import { AuthService } from 'src/app/services/auth.service';
 import { DepartamentoService } from 'src/app/services/departamento.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { PuestoService } from 'src/app/services/puesto.service';
@@ -19,8 +20,10 @@ export class ShowEmployeesComponent implements OnInit {
   puestos: GenericItem[] = []
   departamentos: GenericItem[] = []
   empleados: EmployeeInfoItem[] = []
+  currentUser: string = ''
 
   constructor(
+    private authService: AuthService,
     private puestoService: PuestoService,
     private departamentoService: DepartamentoService,
     private employeeService: EmployeeService,
@@ -28,6 +31,7 @@ export class ShowEmployeesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentUser = this.authService.getEmail()
     this.getDepartamentos()
     this.getPuestosList()
     this.getEmployees()

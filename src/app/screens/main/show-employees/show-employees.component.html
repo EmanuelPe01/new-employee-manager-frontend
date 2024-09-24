@@ -52,7 +52,7 @@
     </div>
 
     <div class="d-flex justify-content-end mt-5 mb-3">
-        <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-center">
+        <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-center" routerLink="new-employee">
             <i class="fa-solid fa-user-plus fa-xl"></i>
             Registrar
         </a>
@@ -73,18 +73,18 @@
                     *ngFor="let empleado of filterEmployee(empleados, formFilter)">
                     <td>{{ empleado.fullName }}</td>
                     <td>{{ empleado.curp }}</td>
-                    <td class="text-center">{{ empleado.puesto }}</td>
-                    <td class="text-center">{{ empleado.departamento}}</td>
-                    <td class="text-center">{{ empleado.estado }}</td>
+                    <td>{{ empleado.puesto }}</td>
+                    <td>{{ empleado.departamento}}</td>
+                    <td>{{ empleado.estado }}</td>
                     <td>
-                        <div class="container text-center">
+                        <div class="container">
                             <div class="row">
                                 <div class="col">
                                     <button class="btn btn-warning" routerLink="edit-employee/{{empleado.id}}">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                 </div>
-                                <div class="col">
+                                <div class="col" *ngIf="currentUser != empleado.email">
                                     <button class="btn btn-danger" (click)="deleteEmployee(empleado.fullName, empleado.id)">
                                         <i class="fa-solid fa-user-xmark"></i>
                                     </button>
