@@ -1,4 +1,5 @@
 export interface EmployeeInfo {
+    id?: string,
     name: string,
     firstSurname: string,
     secondSurname: string,

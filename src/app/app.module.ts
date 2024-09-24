@@ -12,6 +12,8 @@ import { InputComponent } from './items/input.component';
 import { SelectComponent } from './items/select.component';
 import { MainComponent } from './screens/main/main.component';
 import { ShowEmployeesComponent } from './screens/main/show-employees/show-employees.component';
+import { EditEmployeeComponent } from './screens/main/show-employees/actions/edit-employee.component';
+import { DetailEmployeeComponent } from './screens/main/show-employees/actions/detail-employee.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ShowEmployeesComponent } from './screens/main/show-employees/show-emplo
     SelectComponent,
     MainComponent,
     ShowEmployeesComponent,
+    EditEmployeeComponent,
+    DetailEmployeeComponent
   ],
   imports: [
     BrowserModule,

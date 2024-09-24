@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.alertas.showLoadingMessage(true)
+    this.alertas.showLoadingMessage(true, 'Registrando')
     setTimeout(() => {
       this.authService.registerEmployee(this.formRegister.value)
       .pipe(
@@ -59,12 +59,12 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe(
         (data) => {
-          this.alertas.showLoadingMessage(false)
+          this.alertas.showLoadingMessage(false, '')
           this.alertas.showToast("success", data)
           this.router.navigate(["/auth"]);
         }
       )
-    }, 1000)
+    }, 500)
   }
 
   getStatesList() {

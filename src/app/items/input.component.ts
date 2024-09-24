@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
       [placeholder]="placeHolder"
       [type]="type"
       [formControl]="control"
+      [readOnly]="desactivado"
       class = "input"
     />
   `,
@@ -17,5 +18,6 @@ export class InputComponent {
   @Input() placeHolder = ''
   @Input() type = ''
   @Input() control!: FormControl
+  @Input() desactivado: boolean = false
 
 }

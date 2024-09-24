@@ -7,6 +7,7 @@ import { EmployeeInfoItem, GenericItem } from 'src/app/models';
 import { DepartamentoService } from 'src/app/services/departamento.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { PuestoService } from 'src/app/services/puesto.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-show-eployees',
@@ -119,6 +120,40 @@ export class ShowEmployeesComponent implements OnInit {
       return empleados;
     }
     return [];
+  }
+
+  deleteEmployee(nameEmployee: string, id: string) {
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: `Se eliminará a ${nameEmployee}` ,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#000",
+      cancelButtonColor: "#6E1300",
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.alertas.showLoadingMessage(true, 'Eliminando')
+        setTimeout(() => {
+          this.employeeService.deleteEmployee(id).
+          pipe(
+            catchError((error) => {
+              if (error instanceof HttpErrorResponse) {
+                console.log(error.message)
+                if (error.status)
+                  this.alertas.showErrorMessage(`Error con código ${error.status}`)
+              }
+              return throwError(() => new Error("Delete Failed"));
+            })
+          ).subscribe((data) => {
+            this.alertas.showLoadingMessage(false, '')
+            this.alertas.showToast('success', 'Registro eliminado')
+            this.getEmployees()
+          })
+        }, 500)
+      }
+    });
   }
 
   cleanFilter() {

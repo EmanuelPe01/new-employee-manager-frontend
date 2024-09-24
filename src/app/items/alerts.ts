@@ -36,10 +36,10 @@ export class Alerts {
         })
     }
 
-    showLoadingMessage(flag: boolean) {
+    showLoadingMessage(flag: boolean, message: string) {
         if (flag) {
             Swal.fire({
-                title: 'Registrando',
+                title: message,
                 didOpen: () => {
                     Swal.disableButtons();
                     Swal.showLoading(null);
