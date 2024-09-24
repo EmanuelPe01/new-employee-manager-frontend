@@ -92,26 +92,37 @@ export class ShowEmployeesComponent implements OnInit {
   }
 
   filterEmployee(empleados: EmployeeInfoItem[] | undefined, _formFilter: FormGroup): EmployeeInfoItem[] {
-    let name = _formFilter.get('name')?.value
-    let firstSurname = _formFilter.get('firstSurname')?.value
-    let secondSurname = _formFilter.get('secondSurname')?.value
-    let curp = _formFilter.get('curp')?.value
-    let departamento = this.departamentos.find(department => _formFilter.get('departamento_id')?.value == department.id)
-    let puesto = this.puestos.find(puesto => _formFilter.get('puesto_id')?.value == puesto.id)
+    let name: string = _formFilter.get('name')?.value
+    let firstSurname: string = _formFilter.get('firstSurname')?.value
+    let secondSurname: string = _formFilter.get('secondSurname')?.value
+    let curp:string = _formFilter.get('curp')?.value
+    let filter_dep = this.departamentos.find(department => _formFilter.get('departamento_id')?.value == department.id)?.nombre.toLowerCase()
+    let filer_puesto = this.puestos.find(puesto => _formFilter.get('puesto_id')?.value == puesto.id)?.nombre.toLowerCase()
 
-    if ((name.length >= 3 || firstSurname.length >= 3 || secondSurname.length >= 3 || curp.length >= 3 || departamento || puesto) && empleados) {
+    let departamento:string = filter_dep ? filter_dep : '' 
+    let puesto: string = filer_puesto ? filer_puesto : '' 
+    name = name ? name : ''
+    firstSurname = firstSurname ? firstSurname : ''
+    secondSurname = secondSurname ? secondSurname : ''
+    curp = curp ? curp : ''
+
+    if ((name.length >= 3 || firstSurname.length >= 3 || secondSurname.length >= 3 || curp.length >= 3 || departamento.length > 0 || puesto.length > 0 ) && empleados) {
       return empleados.filter(
         (empleado) =>
           empleado.fullName.toLowerCase().includes(name.toLowerCase()) &&
           empleado.fullName.toLowerCase().includes(firstSurname.toLowerCase()) &&
           empleado.fullName.toLowerCase().includes(secondSurname.toLowerCase()) &&
-          empleado.departamento.toLowerCase().includes(secondSurname.toLowerCase()) &&
-          empleado.puesto.toLowerCase().includes(secondSurname.toLowerCase()) 
+          empleado.departamento.toLowerCase().includes(departamento) &&
+          empleado.puesto.toLowerCase().includes(puesto) 
       );
     } else if (empleados) {
       return empleados;
     }
     return [];
+  }
+
+  cleanFilter() {
+    this.formFilter.reset()
   }
 
   get nameControl(): FormControl {
